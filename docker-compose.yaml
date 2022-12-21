@@ -1,0 +1,15 @@
+services:
+  # docker run -v ovpn-data:/etc/openvpn -d -p 1194:1194/udp --cap-add=NET_ADMIN kylemanna/openvpn
+  openvpn:
+    image: kylemanna/openvpn
+    restart: always
+    ports:
+      - "1194:1194/udp"
+    cap_add:
+      - NET_ADMIN
+    volumes:
+      - ovpn-data:/etc/openvpn
+
+volumes:
+  ovpn-data:
+    name: ovpn-data
